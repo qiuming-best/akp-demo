@@ -16,5 +16,5 @@ spec:
   - group: ""
     kind: Namespace
   - group: kargo.akuity.io
-    kind: *
+    kind: "*"
   
