@@ -12,6 +12,7 @@ spec:
   - namespace: akp-demo
     name: demo
   - name: kargo
+    namespace: "*"
   clusterResourceWhitelist:
   - group: ""
     kind: Namespace
