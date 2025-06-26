@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: akp-demo
+  namespace: argocd
+spec:
+  sourceRepos:
+  - https://github.com/akuity/akp-demo.git
+  destinations:
+  - namespace: akp-demo
+    name: demo
+  clusterResourceWhitelist:
+  - group: ""
+    kind: Namespace
+  

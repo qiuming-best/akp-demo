@@ -1,0 +1,17 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: PromotionTask
+metadata:
+  name: promote
+  namespace: akp-demo
+spec:
+  steps:
+  - uses: argocd-update
+    config:
+      apps:
+      - name: guestbook-${{ ctx.stage }}
+        sources:
+        - helm:
+            images:
+            - key: image.tag
+              value: ${{ imageFrom("ghcr.io/akuity/guestbook").Tag }}
+          repoURL: https://github.com/akuity/akp-demo.git

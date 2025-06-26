@@ -1,0 +1,98 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-dev
+  namespace: argocd
+  annotations:
+    kargo.akuity.io/authorized-stage: akp-demo:dev
+spec:
+  project: akp-demo
+  source:
+    repoURL: https://github.com/akuity/akp-demo.git
+    targetRevision: HEAD
+    path: charts/guestbook
+    helm:
+      releaseName: dev
+      valueFiles:
+      - values-dev.yaml
+  destination:
+    name: demo
+    namespace: akp-demo
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-staging
+  namespace: argocd
+  annotations:
+    kargo.akuity.io/authorized-stage: akp-demo:staging
+spec:
+  project: akp-demo
+  source:
+    repoURL: https://github.com/akuity/akp-demo.git
+    targetRevision: HEAD
+    path: charts/guestbook
+    helm:
+      releaseName: staging
+      valueFiles:
+      - values-staging.yaml
+  destination:
+    name: demo
+    namespace: akp-demo
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-prod
+  namespace: argocd
+  annotations:
+    kargo.akuity.io/authorized-stage: akp-demo:prod
+spec:
+  project: akp-demo
+  source:
+    repoURL: https://github.com/akuity/akp-demo.git
+    targetRevision: HEAD
+    path: charts/guestbook
+    helm:
+      releaseName: prod
+      valueFiles:
+      - values-prod.yaml
+  destination:
+    name: demo
+    namespace: akp-demo
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-oom
+  namespace: argocd
+  annotations:
+    kargo.akuity.io/authorized-stage: akp-demo:oom
+spec:
+  project: akp-demo
+  source:
+    repoURL: https://github.com/akuity/akp-demo.git
+    targetRevision: HEAD
+    path: charts/guestbook
+    helm:
+      releaseName: oom
+      valueFiles:
+      - values-oom.yaml
+  destination:
+    name: demo
+    namespace: akp-demo
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
