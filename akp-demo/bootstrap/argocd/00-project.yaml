@@ -11,7 +11,10 @@ spec:
   destinations:
   - namespace: akp-demo
     name: demo
+  - name: kargo
   clusterResourceWhitelist:
   - group: ""
     kind: Namespace
+  - group: kargo.akuity.io
+    kind: *
   
