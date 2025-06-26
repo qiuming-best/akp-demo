@@ -85,11 +85,7 @@ spec:
   source:
     repoURL: https://github.com/akuity/akp-demo.git
     targetRevision: HEAD
-    path: charts/guestbook
-    helm:
-      releaseName: oom
-      valueFiles:
-      - values-oom.yaml
+    path: oom-demo/
   destination:
     name: demo
     namespace: akp-demo
