@@ -15,3 +15,17 @@ spec:
             - key: image.tag
               value: ${{ imageFrom("ghcr.io/akuity/guestbook").Tag }}
           repoURL: https://github.com/akuity/akp-demo.git
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: PromotionTask
+metadata:
+  name: promote-oom
+  namespace: akp-demo
+spec:
+  steps:
+  - uses: argocd-update
+    config:
+      apps:
+      - name: guestbook-${{ ctx.stage }}
+        sources:
+        - repoURL: https://github.com/akuity/akp-demo.git
