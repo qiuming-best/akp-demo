@@ -1,3 +1,0 @@
-env:
-  - name: CONSUME_MEMORY_MB
-    value: "180"

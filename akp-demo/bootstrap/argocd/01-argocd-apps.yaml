@@ -92,3 +92,24 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-crashloop
+  namespace: argocd
+  annotations:
+    kargo.akuity.io/authorized-stage: akp-demo:crashloop
+spec:
+  project: akp-demo
+  source:
+    repoURL: https://github.com/akuity/akp-demo.git
+    targetRevision: HEAD
+    path: crashloop-demo/
+  destination:
+    name: demo
+    namespace: akp-demo
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true

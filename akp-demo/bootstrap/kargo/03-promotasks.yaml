@@ -17,10 +17,11 @@ spec:
           repoURL: https://github.com/akuity/akp-demo.git
 
 ---
+# This promotion will only sync the application without updating the image
 apiVersion: kargo.akuity.io/v1alpha1
 kind: PromotionTask
 metadata:
-  name: promote-oom
+  name: promote-sync-only
   namespace: akp-demo
 spec:
   steps:
