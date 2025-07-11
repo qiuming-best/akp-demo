@@ -10,7 +10,8 @@ spec:
   freight: 4e67f4de17e873b4481de67e7f85244be6ce3009
   stage: dev
   steps:
-  - as: task-1::step-1
+  - uses: argocd-update
+    as: task-1::step-1
     config:
       apps:
       - name: guestbook-${{ ctx.stage }}
@@ -20,4 +21,24 @@ spec:
             - key: image.tag
               value: ${{ imageFrom("ghcr.io/akuity/guestbook").Tag }}
           repoURL: https://github.com/akuity/akp-demo.git
-    uses: argocd-update
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Promotion
+metadata:
+  annotations:
+    kargo.akuity.io/create-actor: admin
+    argocd.argoproj.io/sync-wave: "2"
+  name: crashloop.01jzty7jdahg1myrf58mrewtkn.4e67f4d
+  namespace: akp-demo
+spec:
+  freight: 4e67f4de17e873b4481de67e7f85244be6ce3009
+  stage: crashloop
+  steps:
+  - uses: argocd-update
+    as: task-1::step-1
+    config:
+      apps:
+      - name: guestbook-${{ ctx.stage }}
+        sources:
+        - repoURL: https://github.com/akuity/akp-demo.git

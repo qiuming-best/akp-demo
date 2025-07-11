@@ -1,3 +1,5 @@
+# Prepopulates an older Freight version so we can demonstrate going from
+# an older image to a newer one
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Freight
 metadata:
@@ -24,29 +26,3 @@ images:
   digest: sha256:00ca33883ac6d18b7347a2a04d51fcf1e4fd09ef7404252333152543d68fe255
   repoURL: ghcr.io/akuity/guestbook
   tag: v0.0.1
-
----
-apiVersion: kargo.akuity.io/v1alpha1
-kind: Freight
-metadata:
-  labels:
-    kargo.akuity.io/alias: aspiring-woodpecker
-  name: fb6e6fd656f01b8e649257b39023384ca469f70f
-  namespace: akp-demo
-origin:
-  kind: Warehouse
-  name: guestbook
-alias: aspiring-woodpecker
-images:
-- annotations:
-    org.opencontainers.image.created: "2025-07-02T23:11:02.644Z"
-    org.opencontainers.image.description: ""
-    org.opencontainers.image.licenses: ""
-    org.opencontainers.image.revision: 59d3b42c8919c74d9619116c9440c96c54ea32de
-    org.opencontainers.image.source: https://github.com/akuity/guestbook
-    org.opencontainers.image.title: guestbook
-    org.opencontainers.image.url: https://github.com/akuity/guestbook
-    org.opencontainers.image.version: v0.0.2
-  digest: sha256:faae7216af7e9b22e5a1f7961d9c3d89a4206727363b06f6eeb9622b00f7dc19
-  repoURL: ghcr.io/akuity/guestbook
-  tag: v0.0.2
