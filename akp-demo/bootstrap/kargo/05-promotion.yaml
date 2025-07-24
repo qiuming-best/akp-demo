@@ -2,7 +2,7 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Promotion
 metadata:
   annotations:
-    kargo.akuity.io/create-actor: admin
+    kargo.akuity.io/create-actor: kubernetes:system:serviceaccount:kargo:kargo-gitops-sa
     argocd.argoproj.io/sync-wave: "2"
   name: dev.01jz8zrm16tq35vfp9dngxnjz4.4e67f4d
   namespace: akp-demo
@@ -27,7 +27,7 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Promotion
 metadata:
   annotations:
-    kargo.akuity.io/create-actor: admin
+    kargo.akuity.io/create-actor: kubernetes:system:serviceaccount:kargo:kargo-gitops-sa
     argocd.argoproj.io/sync-wave: "2"
   name: crashloop.01jzty7jdahg1myrf58mrewtkn.4e67f4d
   namespace: akp-demo
