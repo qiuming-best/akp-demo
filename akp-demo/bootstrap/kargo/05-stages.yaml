@@ -61,7 +61,7 @@ spec:
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
-  name: oom
+  name: prod-oom
   namespace: akp-demo
 spec:
   requestedFreight:
@@ -69,7 +69,8 @@ spec:
       kind: Warehouse
       name: guestbook
     sources:
-      direct: true
+      stages:
+      - staging
   promotionTemplate:
     spec:
       steps:
@@ -80,7 +81,7 @@ spec:
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Stage
 metadata:
-  name: crashloop
+  name: prod-crashloop
   namespace: akp-demo
 spec:
   requestedFreight:
@@ -88,7 +89,8 @@ spec:
       kind: Warehouse
       name: guestbook
     sources:
-      direct: true
+      stages:
+      - staging
   promotionTemplate:
     spec:
       steps:

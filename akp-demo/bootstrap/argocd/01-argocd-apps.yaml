@@ -76,10 +76,10 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook-oom
+  name: guestbook-prod-oom
   namespace: argocd
   annotations:
-    kargo.akuity.io/authorized-stage: akp-demo:oom
+    kargo.akuity.io/authorized-stage: akp-demo:prod-oom
 spec:
   project: akp-demo
   source:
@@ -97,10 +97,10 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook-crashloop
+  name: guestbook-prod-crashloop
   namespace: argocd
   annotations:
-    kargo.akuity.io/authorized-stage: akp-demo:crashloop
+    kargo.akuity.io/authorized-stage: akp-demo:prod-crashloop
 spec:
   project: akp-demo
   source:
