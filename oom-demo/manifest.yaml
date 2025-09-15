@@ -3,8 +3,7 @@ kind: Deployment
 metadata:
   name: oom-demo
 spec:
-  minReadySeconds: 5
-  progressDeadlineSeconds: 10
+  progressDeadlineSeconds: 20
   replicas: 1
   selector:
     matchLabels:
@@ -27,8 +26,14 @@ spec:
           command:
             - stress
           image: polinux/stress
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           name: oom
+          startupProbe:
+            exec:
+              command:
+              - sleep
+              - "5"
+            timeoutSeconds: 10
           resources:
             limits:
               cpu: 100m
