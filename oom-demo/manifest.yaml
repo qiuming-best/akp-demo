@@ -23,9 +23,7 @@ spec:
             - 150M
             - '--vm-hang'
             - '1'
-          command:
-            - stress
-          image: polinux/stress
+          image: akuity/stress-ng
           imagePullPolicy: IfNotPresent
           name: oom
           startupProbe:
