@@ -83,7 +83,7 @@ metadata:
 spec:
   project: akp-demo
   source:
-    repoURL: https://github.com/akuity/akp-demo.git
+    repoURL: https://github.com/qiuming-best/akp-demo.git
     targetRevision: HEAD
     path: oom-demo/
   destination:
